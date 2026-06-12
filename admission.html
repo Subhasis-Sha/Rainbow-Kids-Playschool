@@ -1,0 +1,327 @@
+<!-- Rainbow Kids Playschool - Admission Form Page: Multi-step student enrollment wizard -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Form - Rainbow Kids Playschool</title>
+  <meta name="description" content="Enroll your child in Rainbow Kids Playschool. Fill out our multi-step online admission form for Nursery, LKG, and UKG.">
+  
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <style>
+    
+    .admission-card {
+      max-width: 700px;
+      margin: 0 auto;
+      border: 4px solid var(--primary-coral);
+    }
+    
+    
+    .step-progress-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+      padding: 0 10px;
+    }
+    .step-progress-backline {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 6px;
+      background: #E2E3E8;
+      border-radius: var(--radius-round);
+      z-index: 1;
+    }
+    .step-progress-line {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0%;
+      height: 6px;
+      background: var(--success-mint);
+      border-radius: var(--radius-round);
+      z-index: 2;
+      transition: width 0.4s ease;
+    }
+    .step-dot {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-white);
+      border: 4px solid #E2E3E8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      z-index: 3;
+      color: var(--text-muted);
+      transition: var(--transition-slow);
+    }
+    .step-dot.active {
+      border-color: var(--primary-coral);
+      color: var(--primary-coral);
+      transform: scale(1.15);
+      box-shadow: var(--shadow-md);
+    }
+    .step-dot.completed {
+      border-color: var(--success-mint);
+      background-color: var(--success-mint);
+      color: #FFF;
+    }
+
+    
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+      position: relative;
+    }
+    .form-group label {
+      display: block;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 18px;
+      border: 3px solid #E2E3E8;
+      border-radius: var(--radius-sm);
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: var(--transition-fast);
+      background-color: #FFFDFB;
+    }
+    .form-control:focus {
+      border-color: var(--primary-coral);
+      background-color: #FFF;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-control.input-error {
+      border-color: var(--primary-coral) !important;
+      background-color: #FFF5F7;
+    }
+    .error-message {
+      color: var(--primary-coral);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: block;
+      margin-top: 5px;
+    }
+
+    
+    .step-fieldset {
+      display: none;
+      border: none;
+      animation: pop-in-anim 0.4s ease forwards;
+    }
+    .step-fieldset:first-of-type {
+      display: block;
+    }
+
+    
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      gap: 15px;
+    }
+
+    
+    .success-card {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .success-badge-icon {
+      font-size: 5rem;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      display: block;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div id="navbar-placeholder"></div>
+
+  
+  <section class="section" style="background: linear-gradient(135deg, rgba(255,107,139,0.08), rgba(6,214,160,0.08)); padding: 100px 0 60px;">
+    <div class="container" style="text-align: center;">
+      <h1 style="font-size: 3rem; margin-bottom: 20px; font-family: var(--font-heading);">Online Admission 📝</h1>
+      <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto; color: var(--text-muted);">
+        Submit your details in three quick steps. Completing the form grants you a massive +20 stars!
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <div class="container">
+      
+      <div class="card admission-card text-center">
+        
+        
+        <div class="step-progress-wrapper">
+          <div class="step-progress-backline"></div>
+          <div class="step-progress-line" id="step-progress-line"></div>
+          <div class="step-dot active" id="step-dot-1">1</div>
+          <div class="step-dot" id="step-dot-2">2</div>
+          <div class="step-dot" id="step-dot-3">3</div>
+        </div>
+
+        <form id="admission-form">
+          
+          
+          <fieldset class="step-fieldset" id="step-fieldset-1">
+            <h3 style="font-size: 1.6rem; margin-bottom: 25px; font-family: var(--font-heading);">Step 1: Parent Information 👨‍👩-👦</h3>
+            
+            <div class="form-group">
+              <label for="parent-name">Parent / Guardian Full Name *</label>
+              <input type="text" class="form-control" id="parent-name" placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+              <label for="parent-email">Email Address *</label>
+              <input type="email" class="form-control" id="parent-email" placeholder="johndoe@email.com">
+            </div>
+
+            <div class="form-group">
+              <label for="parent-phone">Phone Number *</label>
+              <input type="tel" class="form-control" id="parent-phone" placeholder="+1 (555) 019-2834">
+            </div>
+
+            <div class="form-group">
+              <label for="parent-relation">Relationship to Child *</label>
+              <select class="form-control" id="parent-relation">
+                <option value="Mother">Mother</option>
+                <option value="Father" selected>Father</option>
+                <option value="Guardian">Guardian / Relative</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <div style="flex-grow:1;"></div>
+              <button type="button" class="btn btn-coral form-next-btn">Next Step ➜</button>
+            </div>
+          </fieldset>
+
+          
+          <fieldset class="step-fieldset" id="step-fieldset-2">
+            <h3 style="font-size: 1.6rem; margin-bottom: 25px; font-family: var(--font-heading);">Step 2: Child Information 🐣</h3>
+
+            <div class="form-group">
+              <label for="child-name">Child Full Name *</label>
+              <input type="text" class="form-control" id="child-name" placeholder="Emily Doe">
+            </div>
+
+            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              <div>
+                <label for="child-dob">Date of Birth *</label>
+                <input type="date" class="form-control" id="child-dob">
+              </div>
+              <div>
+                <label style="opacity: 0.8;">Calculated Age</label>
+                <span class="badge badge-sky" id="child-age-display" style="display: none; padding: 12px 18px; width: 100%; border-radius: var(--radius-sm); font-size: 1rem;">Age: 3 Years Old</span>
+                <input type="hidden" id="child-age" value="">
+              </div>
+            </div>
+
+            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              <div>
+                <label for="child-gender">Gender</label>
+                <select class="form-control" id="child-gender">
+                  <option value="Male">Boy</option>
+                  <option value="Female">Girl</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="child-program">Select Class Tier</label>
+                <select class="form-control" id="child-program">
+                  <option value="Nursery">Nursery Class</option>
+                  <option value="LKG" selected>LKG Class</option>
+                  <option value="UKG">UKG Class</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline form-prev-btn">◀ Back</button>
+              <button type="button" class="btn btn-coral form-next-btn">Next Step ➜</button>
+            </div>
+          </fieldset>
+
+          
+          <fieldset class="step-fieldset" id="step-fieldset-3">
+            <h3 style="font-size: 1.6rem; margin-bottom: 25px; font-family: var(--font-heading);">Step 3: Medical details & Comments 🏥</h3>
+
+            <div class="form-group">
+              <label for="child-medical">Medical Conditions / Food Allergies (If Any)</label>
+              <textarea class="form-control" id="child-medical" rows="3" placeholder="E.g., peanut allergies, asthma triggers, none."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="parent-comments">Comments or Special Requests</label>
+              <textarea class="form-control" id="parent-comments" rows="3" placeholder="Tell us about your child's favorite toys or what you expect!"></textarea>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+              <input type="checkbox" id="accept-terms" checked style="width: 20px; height: 20px; cursor: pointer;">
+              <label for="accept-terms" style="margin-bottom: 0; font-size: 0.95rem; cursor: pointer;">I confirm all details entered are correct and valid.</label>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline form-prev-btn">◀ Back</button>
+              <button type="submit" class="btn btn-sky" style="background-color: var(--success-mint);">Submit Application 🎉</button>
+            </div>
+          </fieldset>
+
+        </form>
+
+        
+        <div class="success-card" id="admission-success-card" style="display: none;">
+          <span class="success-badge-icon">🏆</span>
+          <h2 style="font-size: 2.2rem; color: var(--success-mint); margin-bottom: 15px; font-family: var(--font-heading);">Application Received!</h2>
+          <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
+            Thank you! We have registered your application in our system. Our admin desk will review details and contact you via email/phone within 48 hours.
+          </p>
+          <a href="index.html" class="btn btn-coral">Return Home 🏠</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  
+  <div id="footer-placeholder"></div>
+
+  
+  <div id="mascot-placeholder"></div>
+  <div id="rewards-placeholder"></div>
+
+  
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/rewards.js" defer></script>
+  <script src="assets/js/mascot.js" defer></script>
+  <script src="assets/js/admission.js" defer></script>
+</body>
+</html>

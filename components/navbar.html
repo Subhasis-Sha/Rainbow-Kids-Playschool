@@ -1,0 +1,36 @@
+<!-- Common Navigation Bar Component: Main menu and star badge counter -->
+
+<nav class="header-nav">
+  <div class="container nav-container">
+    <a href="index.html" class="logo">
+      <div class="logo-icon-wrapper">
+        <img src="assets/images/hero/rainbow.png" alt="Rainbow Kids logo">
+      </div>
+      <span>Rainbow Kids</span>
+    </a>
+    
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item" data-page="index"><a href="index.html">Home</a></li>
+      <li class="nav-item" data-page="about"><a href="about.html">About Us</a></li>
+      <li class="nav-item" data-page="programs"><a href="programs.html">Programs</a></li>
+      <li class="nav-item" data-page="gallery"><a href="gallery.html">Gallery</a></li>
+      <li class="nav-item" data-page="activities"><a href="activities.html">Activities</a></li>
+      <li class="nav-item" data-page="admission"><a href="admission.html">Admission</a></li>
+      <li class="nav-item" data-page="contact"><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <div class="rewards-nav-badge" id="rewards-badge">
+        <span class="star-icon">⭐</span>
+        <span class="text-label">Stars:</span>
+        <span id="star-count">0</span>
+      </div>
+      
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>

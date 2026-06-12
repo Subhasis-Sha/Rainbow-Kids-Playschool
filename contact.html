@@ -1,0 +1,243 @@
+<!-- Rainbow Kids Playschool - Contact Page: Leaflet map, address, and email message form -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Rainbow Kids Playschool</title>
+  <meta name="description" content="Get in touch with Rainbow Kids Playschool. Find our address, phone number, opening hours, interactive map location, and contact form.">
+  
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <style>
+    
+    .contact-layout-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1.8fr;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    .contact-card {
+      border: 3px solid var(--secondary-sky);
+    }
+    .info-item-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .info-item-block .icon {
+      font-size: 1.6rem;
+      color: var(--primary-coral);
+      background: rgba(255,107,139,0.1);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-item-block h4 {
+      font-size: 1.15rem;
+      margin-bottom: 5px;
+      font-family: var(--font-heading);
+    }
+    .info-item-block p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div id="navbar-placeholder"></div>
+
+  
+  <section class="section" style="background: linear-gradient(135deg, rgba(78,168,222,0.08), rgba(6,214,160,0.08)); padding: 100px 0 60px;">
+    <div class="container" style="text-align: center;">
+      <h1 style="font-size: 3rem; margin-bottom: 20px; font-family: var(--font-heading);">Contact Our Campus 📞</h1>
+      <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto; color: var(--text-muted);">
+        Have questions about curriculums or timings? Reach out using our details or drop us a message card below.
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <div class="container">
+      
+      
+      <div id="contact-map" style="height: 380px; width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-inset); border: 4px solid var(--secondary-sky); margin-bottom: 50px; z-index: 1;"></div>
+
+      <div class="contact-layout-grid">
+        
+        
+        <div class="card contact-card">
+          <h3 style="font-size: 1.6rem; margin-bottom: 25px; font-family: var(--font-heading);">Contact Information</h3>
+          
+          <div class="info-item-block">
+            <span class="icon">📍</span>
+            <div>
+              <h4>Campus Location</h4>
+              <p>123 Rainbow Lane, Play City, PC 54321</p>
+            </div>
+          </div>
+
+          <div class="info-item-block">
+            <span class="icon">📞</span>
+            <div>
+              <h4>Phone Number</h4>
+              <p>+1 (555) 123-4567</p>
+            </div>
+          </div>
+
+          <div class="info-item-block">
+            <span class="icon">✉️</span>
+            <div>
+              <h4>Email Address</h4>
+              <p>hello@rainbowkids.edu</p>
+            </div>
+          </div>
+
+          <div class="info-item-block">
+            <span class="icon">⏰</span>
+            <div>
+              <h4>Campus Timings</h4>
+              <p>Monday - Friday: 08:00 AM - 02:00 PM</p>
+              <p>Saturday & Sunday: Closed</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="card" style="border: 3px solid var(--primary-coral);">
+          <h3 style="font-size: 1.6rem; margin-bottom: 20px; font-family: var(--font-heading);">Send a Message Card ✉️</h3>
+          
+          <form id="contact-form" onsubmit="submitMessageForm(event)">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+              <div>
+                <label style="display:block; font-weight:600; font-family:var(--font-heading); margin-bottom:8px;">Your Name *</label>
+                <input type="text" id="contact-name" required class="form-control" style="width:100%;" placeholder="John Doe">
+              </div>
+              <div>
+                <label style="display:block; font-weight:600; font-family:var(--font-heading); margin-bottom:8px;">Email Address *</label>
+                <input type="email" id="contact-email" required class="form-control" style="width:100%;" placeholder="johndoe@email.com">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label style="display:block; font-weight:600; font-family:var(--font-heading); margin-bottom:8px;">Subject *</label>
+              <input type="text" id="contact-subject" required class="form-control" placeholder="Inquiry about Nursery Program">
+            </div>
+
+            <div style="margin-bottom: 25px;">
+              <label style="display:block; font-weight:600; font-family:var(--font-heading); margin-bottom:8px;">Your Message *</label>
+              <textarea id="contact-msg" required class="form-control" rows="4" placeholder="Write your comments here..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-coral" style="width:100%;">Send Message 🚀</button>
+          </form>
+
+          
+          <div id="contact-success-msg" style="display: none; text-align: center; padding: 30px 10px;">
+            <span style="font-size: 3.5rem; display: block; margin-bottom: 10px;">📬</span>
+            <h3 style="color: var(--success-mint); font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 10px;">Message Sent Successfully!</h3>
+            <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto 20px;">We have received your message card. Our receptionist will write back to you at your email soon!</p>
+            <button class="btn btn-sky" onclick="resetContactForm()">Write another card</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      const lat = 51.505;
+      const lng = -0.09;
+      
+      try {
+        const map = L.map('contact-map', {scrollWheelZoom: false}).setView([lat, lng], 15);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        
+        const schoolIcon = L.divIcon({
+          className: 'custom-map-pin',
+          html: '<div style="font-size: 2.8rem; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25)); transform: translate(-15px, -45px);">🏫</div>',
+          iconSize: [40, 40],
+          iconAnchor: [20, 40]
+        });
+
+        L.marker([lat, lng], {icon: schoolIcon}).addTo(map)
+          .bindPopup('<b style="font-family: \'Fredoka\'; font-size: 1.1rem; color: #FF6B8B;">Rainbow Kids Playschool</b><br>Come and meet our happy mascots!')
+          .openPopup();
+      } catch(e) {
+        console.error("Leaflet initialization failed", e);
+      }
+    });
+
+    function submitMessageForm(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById("contact-form");
+      const success = document.getElementById("contact-success-msg");
+      
+      if (form && success) {
+        form.style.display = "none";
+        success.style.display = "block";
+        
+        if (typeof playSynthSound === "function") {
+          playSynthSound('success');
+        }
+      }
+    }
+
+    function resetContactForm() {
+      const form = document.getElementById("contact-form");
+      const success = document.getElementById("contact-success-msg");
+      
+      if (form && success) {
+        form.reset();
+        success.style.display = "none";
+        form.style.display = "block";
+        
+        if (typeof playSynthSound === "function") {
+          playSynthSound('click');
+        }
+      }
+    }
+  </script>
+
+  
+  <div id="footer-placeholder"></div>
+
+  
+  <div id="mascot-placeholder"></div>
+  <div id="rewards-placeholder"></div>
+
+  
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/rewards.js" defer></script>
+  <script src="assets/js/mascot.js" defer></script>
+</body>
+</html>

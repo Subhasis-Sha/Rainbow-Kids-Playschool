@@ -1,0 +1,115 @@
+/* Animations Stylesheet: CSS Keyframes for driftings, bounces, talk wiggles, and star particles */
+
+.cloud-drift-slow {
+  animation: cloud-drift 45s linear infinite;
+}
+
+.cloud-drift-fast {
+  animation: cloud-drift 25s linear infinite;
+}
+
+@keyframes cloud-drift {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+.balloon-float {
+  position: absolute;
+  bottom: -150px;
+  animation: balloon-up 12s linear infinite, balloon-sway 3s ease-in-out infinite alternate;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes balloon-up {
+  0% { bottom: -150px; }
+  100% { bottom: 110vh; }
+}
+
+@keyframes balloon-sway {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(30px); }
+}
+
+.mascot-bounce-idle {
+  animation: mascot-bounce 4s ease-in-out infinite alternate;
+}
+
+@keyframes mascot-bounce {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(5px) rotate(-1deg); }
+}
+
+.mascot-wiggle-talk {
+  animation: mascot-wiggle 0.3s ease-in-out infinite;
+}
+
+@keyframes mascot-wiggle {
+  0% { transform: rotate(-2deg) scale(1.02); }
+  50% { transform: rotate(2deg) scale(1.02); }
+  100% { transform: rotate(-2deg) scale(1.02); }
+}
+
+.float-element {
+  animation: general-float 5s ease-in-out infinite alternate;
+}
+
+@keyframes general-float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+.pop-in {
+  animation: pop-in-anim 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes pop-in-anim {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.star-particle {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: var(--accent-yellow);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  pointer-events: none;
+  z-index: 10000;
+  animation: star-particle-fly 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes star-particle-fly {
+  0% {
+    transform: translate(0, 0) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.hover-zoom {
+  transition: var(--transition-slow);
+}
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
+
+.heartbeat-pulse {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.1); }
+  40% { transform: scale(1.05); }
+  60% { transform: scale(1.15); }
+  80% { transform: scale(1); }
+  100% { transform: scale(1); }
+}

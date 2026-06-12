@@ -1,0 +1,32 @@
+<!-- Common Mascot Widget: Interactive mascot selections and speech bubbles -->
+
+<div class="mascot-widget" id="mascot-widget">
+  <div class="mascot-speech-bubble pop-in" id="mascot-bubble" style="display: none;">
+    <p id="mascot-text">Hello! I'm Barnaby the Bunny. Click me to talk!</p>
+    <button class="mascot-close-speech" id="mascot-bubble-close">×</button>
+  </div>
+  
+  <div class="mascot-interactive" id="mascot-interactive-area">
+    <img src="assets/images/mascots/rabbit.png" id="mascot-img" class="mascot-bounce-idle" alt="School Mascot">
+  </div>
+  
+  <div class="mascot-selector-popover" id="mascot-selector" style="display: none;">
+    <h4>Choose Mascot:</h4>
+    <div class="mascot-options">
+      <div class="mascot-opt active" data-mascot="rabbit">
+        <img src="assets/images/mascots/rabbit.png" alt="Rabbit">
+        <span>Barnaby</span>
+      </div>
+      <div class="mascot-opt" data-mascot="panda">
+        <img src="assets/images/mascots/panda.png" alt="Panda">
+        <span>Penny</span>
+      </div>
+      <div class="mascot-opt" data-mascot="elephant">
+        <img src="assets/images/mascots/elephant.png" alt="Elephant">
+        <span>Elly</span>
+      </div>
+    </div>
+  </div>
+  
+  <button class="mascot-toggle-selector" id="mascot-sel-btn" title="Change Mascot">🎨</button>
+</div>

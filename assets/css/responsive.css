@@ -1,0 +1,161 @@
+/* Responsive adjustments: Media queries for grids, container spacing, and mobile devices */
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  
+  .activities-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .game-container-card {
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 35px;
+  }
+
+  
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: var(--bg-cream);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 30px;
+    gap: 20px;
+    box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.05);
+    border-left: 2px dashed rgba(255, 107, 139, 0.15);
+    transition: var(--transition-normal);
+    overflow-y: auto;
+  }
+
+  .nav-menu.open {
+    right: 0;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-item a {
+    display: block;
+    font-size: 1.2rem;
+    padding: 12px 15px;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-item a::after {
+    display: none;
+  }
+
+  
+  .rewards-nav-badge {
+    margin-right: 15px;
+    padding: 6px 12px;
+    font-size: 0.95rem;
+  }
+
+  
+  .about-timeline::before {
+    left: 20px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 55px;
+    padding-right: 0;
+    text-align: left !important;
+  }
+  .timeline-item::before {
+    left: 20px !important;
+    transform: translateX(-50%) !important;
+  }
+  .timeline-item.left, .timeline-item.right {
+    left: 0;
+  }
+
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-col h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .footer-contact-item {
+    justify-content: center;
+  }
+
+  
+  .hero-content {
+    padding: 120px 0 80px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.4rem;
+  }
+  .logo-icon-wrapper {
+    width: 35px;
+    height: 35px;
+  }
+
+  .rewards-nav-badge span.text-label {
+    display: none; 
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    padding: 10px 22px;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+}

@@ -1,0 +1,370 @@
+<!-- Rainbow Kids Playschool - Gallery Page: Filterable school photo and video lightbox galleries -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Rainbow Kids Playschool</title>
+  <meta name="description" content="View photos and video tours of Rainbow Kids Playschool classrooms, playgrounds, library, art rooms, and graduation events.">
+  
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <style>
+    
+    .filter-btn-group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .gallery-filter-btn {
+      padding: 10px 22px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      border: 3px dashed var(--secondary-sky);
+      background: var(--bg-white);
+      color: var(--secondary-sky);
+      cursor: pointer;
+      border-radius: var(--radius-round);
+      transition: var(--transition-slow);
+    }
+    .gallery-filter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .gallery-filter-btn.active {
+      background: var(--secondary-sky);
+      color: #FFF;
+      border-style: solid;
+      border-color: var(--secondary-sky-dark);
+      box-shadow: var(--shadow-md);
+    }
+
+    
+    .gallery-container-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .gallery-item {
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: var(--transition-slow);
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-yellow);
+    }
+    .gallery-thumb-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: #F0F1F5;
+    }
+    .gallery-thumb-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover .gallery-thumb-wrapper img {
+      transform: scale(1.1);
+    }
+    
+    
+    .video-play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 107, 139, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-fast);
+      z-index: 5;
+    }
+    .gallery-item:hover .video-play-overlay {
+      background: var(--primary-coral-dark);
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+    .gallery-info-box {
+      padding: 15px;
+    }
+    .gallery-caption {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+      font-size: 1.05rem;
+    }
+    .gallery-tag {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    
+    .lightbox-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(43, 45, 66, 0.9);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      background: none;
+      border: none;
+      color: #FFF;
+      font-size: 3rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: var(--transition-fast);
+      z-index: 10000;
+    }
+    .lightbox-close:hover {
+      color: var(--primary-coral);
+      transform: scale(1.1);
+    }
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      color: #FFF;
+      font-size: 2.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+      z-index: 10000;
+      user-select: none;
+    }
+    .lightbox-nav-btn:hover {
+      background: var(--primary-coral);
+    }
+    .lightbox-nav-btn.prev { left: 40px; }
+    .lightbox-nav-btn.next { right: 40px; }
+    
+    .lightbox-content-box {
+      max-width: 85%;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    .lightbox-content-box img, .lightbox-content-box video {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 4px solid var(--bg-white);
+    }
+    .lightbox-caption-text {
+      color: #FFF;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      text-align: center;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div id="navbar-placeholder"></div>
+
+  
+  <section class="section" style="background: linear-gradient(135deg, rgba(255,107,139,0.08), rgba(255,209,102,0.08)); padding: 100px 0 60px;">
+    <div class="container" style="text-align: center;">
+      <h1 style="font-size: 3rem; margin-bottom: 20px; font-family: var(--font-heading);">School Gallery 📸</h1>
+      <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto; color: var(--text-muted);">
+        Take a peek at the happy days of our Rainbow kids! Check out photos and video tours of our classroom activities and school spaces.
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <div class="container">
+      
+      
+      <div class="filter-btn-group">
+        <button class="gallery-filter-btn active" data-filter="all">Show All</button>
+        <button class="gallery-filter-btn" data-filter="classroom">Classroom</button>
+        <button class="gallery-filter-btn" data-filter="playground">Playground</button>
+        <button class="gallery-filter-btn" data-filter="library">Library</button>
+        <button class="gallery-filter-btn" data-filter="artroom">Art Studio</button>
+      </div>
+
+      
+      <div class="gallery-container-grid">
+        
+        
+        <div class="gallery-item" data-category="classroom">
+          <div class="gallery-thumb-wrapper">
+            <img src="assets/images/rooms/classroom.jpg" alt="Classroom">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Interactive Classroom Setup</h4>
+            <span class="gallery-tag">Classrooms</span>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item" data-category="playground">
+          <div class="gallery-thumb-wrapper">
+            <img src="assets/images/rooms/playground.jpg" alt="Playground">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Recess Fun at Slide Parks</h4>
+            <span class="gallery-tag">Playground</span>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item" data-category="library">
+          <div class="gallery-thumb-wrapper">
+            <img src="assets/images/rooms/library.jpg" alt="Library">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Storybook Listening Circle</h4>
+            <span class="gallery-tag">Library</span>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item" data-category="artroom">
+          <div class="gallery-thumb-wrapper">
+            <img src="assets/images/rooms/artroom.jpg" alt="Artroom">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Creative Painting Sessions</h4>
+            <span class="gallery-tag">Art Studio</span>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item" data-category="classroom">
+          <div class="gallery-thumb-wrapper">
+            <img src="assets/images/gallery/photo1.jpg" alt="Blocks Building">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Fun with Colorful Blocks</h4>
+            <span class="gallery-tag">Classrooms</span>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item" data-category="playground">
+          <div class="gallery-thumb-wrapper">
+            <img src="assets/images/gallery/photo2.jpg" alt="Sports Day">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Sports Day Medals Celebration</h4>
+            <span class="gallery-tag">Playground</span>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item" data-category="classroom">
+          <div class="gallery-thumb-wrapper">
+            <img src="assets/images/gallery/photo3.jpg" alt="Graduation Event">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Annual Day Graduation Ceremony</h4>
+            <span class="gallery-tag">Classrooms</span>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item video-item" data-category="classroom" data-src="assets/videos/school-tour.mp4">
+          <div class="gallery-thumb-wrapper">
+            <div class="video-play-overlay">▶</div>
+            <img src="assets/images/rooms/classroom.jpg" alt="Virtual Class Video Tour">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Virtual School Video Tour</h4>
+            <span class="gallery-tag">Video Tour</span>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item video-item" data-category="classroom" data-src="assets/videos/welcome-video.mp4">
+          <div class="gallery-thumb-wrapper">
+            <div class="video-play-overlay">▶</div>
+            <img src="assets/images/rooms/playground.jpg" alt="Mascot Welcome Greeting">
+          </div>
+          <div class="gallery-info-box">
+            <h4 class="gallery-caption">Mascot Welcome Greeting</h4>
+            <span class="gallery-tag">Video Tour</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  
+  <div class="lightbox-modal-overlay" id="gallery-lightbox" style="display: none;">
+    <button class="lightbox-close" id="lightbox-close">×</button>
+    <button class="lightbox-nav-btn prev" id="lightbox-prev">‹</button>
+    <div class="lightbox-content-box">
+      <img src="" id="lightbox-img" alt="Lightbox Image" style="display: none;">
+      <video src="" id="lightbox-video" controls style="display: none;"></video>
+      <p class="lightbox-caption-text" id="lightbox-caption">Caption Details</p>
+    </div>
+    <button class="lightbox-nav-btn next" id="lightbox-next">›</button>
+  </div>
+
+  
+  <div id="footer-placeholder"></div>
+
+  
+  <div id="mascot-placeholder"></div>
+  <div id="rewards-placeholder"></div>
+
+  
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/rewards.js" defer></script>
+  <script src="assets/js/mascot.js" defer></script>
+  <script src="assets/js/gallery.js" defer></script>
+</body>
+</html>

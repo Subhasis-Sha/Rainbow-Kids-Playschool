@@ -1,0 +1,279 @@
+<!-- Rainbow Kids Playschool - Programs Page: Details nursery, LKG, and UKG class schedules -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Programs - Rainbow Kids Playschool</title>
+  <meta name="description" content="Explore our Nursery, LKG, and UKG programs. Learn about early literacy, numbers, sensory plays, and our interactive curriculum for different age groups.">
+  
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <style>
+    
+    .program-tabs-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    .program-tab-btn {
+      padding: 15px 35px;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      border: 3px dashed transparent;
+      background: var(--bg-white);
+      color: var(--text-dark);
+      cursor: pointer;
+      border-radius: var(--radius-md);
+      transition: var(--transition-slow);
+      box-shadow: var(--shadow-sm);
+    }
+    .program-tab-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .program-tab-btn.tab-nursery.active {
+      background: var(--primary-coral);
+      color: #FFF;
+      border-style: solid;
+      border-color: var(--primary-coral-dark);
+    }
+    .program-tab-btn.tab-lkg.active {
+      background: var(--secondary-sky);
+      color: #FFF;
+      border-style: solid;
+      border-color: var(--secondary-sky-dark);
+    }
+    .program-tab-btn.tab-ukg.active {
+      background: var(--purple-lilac);
+      color: #FFF;
+      border-style: solid;
+      border-color: var(--purple-lilac-dark);
+    }
+    .program-panel {
+      display: none;
+      animation: pop-in-anim 0.4s ease forwards;
+    }
+    .program-panel.active {
+      display: block;
+    }
+    .schedule-item {
+      display: flex;
+      gap: 20px;
+      padding: 15px 0;
+      border-bottom: 2px dashed rgba(43,45,66,0.06);
+    }
+    .schedule-time {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--primary-coral);
+      min-width: 120px;
+      font-size: 1.15rem;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div id="navbar-placeholder"></div>
+
+  
+  <section class="section" style="background: linear-gradient(135deg, rgba(78,168,222,0.08), rgba(157,78,221,0.08)); padding: 100px 0 60px;">
+    <div class="container" style="text-align: center;">
+      <h1 style="font-size: 3rem; margin-bottom: 20px; font-family: var(--font-heading);">Our Programs 🎒</h1>
+      <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto; color: var(--text-muted);">
+        Explore our age-based curriculum structures. We ensure smooth milestone transits from early play to structured classroom readiness.
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <div class="container">
+      
+      
+      <div class="program-tabs-container">
+        <button class="program-tab-btn tab-nursery active" onclick="switchProgramTab('nursery')">Nursery (2.5 - 3.5 Years)</button>
+        <button class="program-tab-btn tab-lkg" onclick="switchProgramTab('lkg')">LKG (3.5 - 4.5 Years)</button>
+        <button class="program-tab-btn tab-ukg" onclick="switchProgramTab('ukg')">UKG (4.5 - 5.5 Years)</button>
+      </div>
+
+      
+      
+      <div class="program-panel active" id="panel-nursery">
+        <div class="card border-coral" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+          <div>
+            <h2 style="font-size: 2.2rem; color: var(--primary-coral); margin-bottom: 15px; font-family: var(--font-heading);">Nursery Playpen Tier 🐣</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
+              For toddlers taking their first steps away from home. We emphasize sensory explorations, potty training transitions, verbal expressions, and basic motor co-ordination.
+            </p>
+            <h3 style="margin-bottom: 12px; font-size: 1.3rem;">Focus Areas:</h3>
+            <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">🍭 <strong>Sensory Integration:</strong> Sand box, mud modelings, water splashings.</li>
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">🎨 <strong>Finger Painting:</strong> Hand prints, coloring guides, large block drawings.</li>
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">🎵 <strong>Nursery Rhymes:</strong> Music listening, clapping plays, dance movements.</li>
+            </ul>
+            <a href="admission.html" class="btn btn-coral">Apply for Nursery</a>
+          </div>
+          <div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px; border-bottom: 3px dashed var(--accent-yellow); padding-bottom: 8px;">Nursery Daily Schedule:</h3>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--primary-coral);">09:00 AM</div>
+              <div><strong>Welcome & Free Play:</strong> Mascots welcome children into toy grids.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--primary-coral);">09:45 AM</div>
+              <div><strong>Rhyme Circle Time:</strong> Singing nursery hymns and greeting friends.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--primary-coral);">10:30 AM</div>
+              <div><strong>Healthy Snack Break:</strong> Supervised table manners and feeding.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--primary-coral);">11:00 AM</div>
+              <div><strong>Sensory Sandbox Play:</strong> Outdoor slides and shape designs.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--primary-coral);">11:45 AM</div>
+              <div><strong>Story & Goodbye:</strong> Picture book readings and doll naps.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="program-panel" id="panel-lkg">
+        <div class="card border-sky" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+          <div>
+            <h2 style="font-size: 2.2rem; color: var(--secondary-sky); margin-bottom: 15px; font-family: var(--font-heading);">LKG Explorer Tier 🧭</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
+              For children learning to socialize, count, and structure their thoughts. We introduce writing lines, basic spelling, arithmetic (1-20), and cognitive block matching.
+            </p>
+            <h3 style="margin-bottom: 12px; font-size: 1.3rem;">Focus Areas:</h3>
+            <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">🅰️ <strong>Letters & Sounds:</strong> Phonics sounds, writing shapes, identifying letters.</li>
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">🔢 <strong>Early Math:</strong> Number drawings, puzzle matchings, size orders.</li>
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">🤝 <strong>Socialization:</strong> Story rotations, toy sharing, peer greetings.</li>
+            </ul>
+            <a href="admission.html" class="btn btn-sky">Apply for LKG</a>
+          </div>
+          <div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px; border-bottom: 3px dashed var(--accent-yellow); padding-bottom: 8px;">LKG Daily Schedule:</h3>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--secondary-sky);">09:00 AM</div>
+              <div><strong>Welcome & Table Tasks:</strong> Puzzle boards and writing tracing.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--secondary-sky);">09:45 AM</div>
+              <div><strong>Phonics & Reading:</strong> Loud vowel pronunciations and letter flashcards.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--secondary-sky);">10:30 AM</div>
+              <div><strong>Recess & Lunch:</strong> Fun playground swing plays.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--secondary-sky);">11:00 AM</div>
+              <div><strong>Math & Colors:</strong> Count blocks and draw shapes.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--secondary-sky);">11:45 AM</div>
+              <div><strong>Creative Art & Hand crafts:</strong> Clay crafts and color papers cutting.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="program-panel" id="panel-ukg">
+        <div class="card border-purple" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+          <div>
+            <h2 style="font-size: 2.2rem; color: var(--purple-lilac); margin-bottom: 15px; font-family: var(--font-heading);">UKG Graduate Tier 🎓</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
+              Prepares children for standard elementary schools. We master reading basic sentences, solving addition/subtraction, writing words, and handling independent projects.
+            </p>
+            <h3 style="margin-bottom: 12px; font-size: 1.3rem;">Focus Areas:</h3>
+            <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">📖 <strong>Active Reading:</strong> Sight words, reading stories, spelling.</li>
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">➕ <strong>Elementary Math:</strong> Adding objects, subtractions, counting (1-100).</li>
+              <li style="margin-bottom: 8px; font-size: 1.05rem;">💡 <strong>General Science:</strong> Seasons, animals, plants, health hygiene.</li>
+            </ul>
+            <a href="admission.html" class="btn btn-sky" style="background-color: var(--purple-lilac);">Apply for UKG</a>
+          </div>
+          <div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px; border-bottom: 3px dashed var(--accent-yellow); padding-bottom: 8px;">UKG Daily Schedule:</h3>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--purple-lilac);">09:00 AM</div>
+              <div><strong>Morning Assembly & Speech:</strong> Student greetings and daily calendar updates.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--purple-lilac);">09:45 AM</div>
+              <div><strong>Grammar & Reading:</strong> Writing simple logs and reading story booklets.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--purple-lilac);">10:30 AM</div>
+              <div><strong>Play Recess:</strong> Cooperative physical active sports.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--purple-lilac);">11:00 AM</div>
+              <div><strong>Math & Science Labs:</strong> Solving additions, planting seeds.</div>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time" style="color: var(--purple-lilac);">11:45 AM</div>
+              <div><strong>Computer & Interactive Audio:</strong> Fun digital drawings and quizzes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+  <script>
+    function switchProgramTab(programKey) {
+      
+      const btns = document.querySelectorAll(".program-tab-btn");
+      btns.forEach(btn => {
+        if (btn.classList.contains(`tab-${programKey}`)) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+      
+      
+      const panels = document.querySelectorAll(".program-panel");
+      panels.forEach(panel => {
+        if (panel.id === `panel-${programKey}`) {
+          panel.classList.add("active");
+        } else {
+          panel.classList.remove("active");
+        }
+      });
+
+      if (typeof playSynthSound === "function") {
+        playSynthSound('click');
+      }
+    }
+  </script>
+
+  
+  <div id="footer-placeholder"></div>
+
+  
+  <div id="mascot-placeholder"></div>
+  <div id="rewards-placeholder"></div>
+
+  
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/rewards.js" defer></script>
+  <script src="assets/js/mascot.js" defer></script>
+</body>
+</html>
