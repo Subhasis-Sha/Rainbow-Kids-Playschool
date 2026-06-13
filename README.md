@@ -1,16 +1,18 @@
-# Rainbow Kids Playschool 🌈
+# GVIT-Playschool 🏫✨
 
-Welcome to the **Rainbow Kids Playschool** website! This is a vibrant, interactive, and child-friendly static web application built using HTML, CSS, and vanilla JavaScript.
+Welcome to the **GVIT-Playschool** website! This is a vibrant, interactive, and child-friendly static web application built using HTML, CSS, and vanilla JavaScript.
 
 ## 🚀 Features
 
-*   **Interactive Mascots**: Choose from Barnaby Bunny, Penny Panda, or Elly Elephant to guide you through the site.
+*   **Interactive Mascots**: Guide widget featuring Barnaby Bunny, Penny Panda, or Elly Elephant to guide you through the site.
 *   **Play Sandbox Games**:
-    *   *Creative Art Easel*: Draw with custom brush colors and sizes, erase elements, and download your masterpieces.
-    *   *Bubble Pop Game*: Pop letters, numbers, and animals to beat your high score.
-*   **Star Rewards & Achievement Badges**: Unlock milestones by exploring the site, completing games, and filling out the application form.
-*   **Multi-Step Admission Form**: Includes interactive validations and a cute caterpillar progress tracker.
-*   **Interactive Campus Map**: Built using Leaflet.js to pinpoint the school location.
+    *   *Creative Art Easel*: Draw with custom brush colors and sizes, erase elements, and earn star badges.
+    *   *Bubble Pop Game*: Pop letters, numbers, and animals with synthesizer audio triggers to beat your high score.
+*   **Star Rewards & Scorecard**: Track milestone progression and star points persistently using local storage.
+*   **Multi-step Admission Form**: Online application wizard with form validation.
+*   **Cozy Night Mode**: Responsive, fully high-contrast day and night mode overrides for comfortable browsing.
+*   **Campus Address & Location**: Pinpointed location via responsive Google Maps integration at GVI Technology.
+*   **Floating Scroll-to-Top**: Kids-themed floating scroll button that fades out at the top of the viewport.
 
 ## 📁 Project Structure
 
@@ -20,9 +22,9 @@ Welcome to the **Rainbow Kids Playschool** website! This is a vibrant, interacti
 *   `gallery.html` - Filtering photo/video lightbox gallery.
 *   `activities.html` - Games zone (Art easel and bubble pop).
 *   `admission.html` - Online enrollments form.
-*   `contact.html` - Contact information, campus map, and message cards.
+*   `contact.html` - Contact information, responsive Google Map, and message cards.
 *   `assets/`
-    *   `css/` - Styling, animations, layout responsive rules, and game designs.
-    *   `js/` - Interactive mascot, rewards, drawing canvas, and bubble pop logic.
+    *   `css/` - Core styling, animations, layout responsive rules, and game designs.
+    *   `js/` - Sound synthesizer, theme toggle, drawing canvas, and bubble pop logic.
     *   `images/` - Image folders organized by room type, icons, and mascot styles.
-*   `components/` - Common headers, footers, mascot widgets, and achievement modals.
+

@@ -1,8 +1,11 @@
-/* Footer Styles: SVG wave fill, column alignments, contact grid, and copyright styles */
+/**
+ * @file footer.css
+ * @description Styles for site-wide footer, including the bottom SVG wave border, layout configurations, social links, and contact modules.
+ */
 
 .footer {
-  background-color: var(--text-dark);
-  color: var(--text-light);
+  background-color: #2B2D42;
+  color: #FFFFFF;
   padding: 100px 0 30px;
   position: relative;
   overflow: hidden;
@@ -26,9 +29,10 @@
 }
 
 .footer-wave .shape-fill {
-  fill: var(--bg-cream);
+  fill: #FFFDF5;
 }
 
+/* Fallback grid configuration */
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
@@ -37,7 +41,7 @@
 }
 
 .footer-col h3 {
-  color: var(--accent-yellow);
+  color: #FFC107;
   font-size: 1.4rem;
   margin-bottom: 25px;
   position: relative;
@@ -50,8 +54,8 @@
   bottom: -8px;
   width: 40px;
   height: 3px;
-  background-color: var(--primary-coral);
-  border-radius: var(--radius-round);
+  background-color: #FF4B72;
+  border-radius: 50px;
 }
 
 .footer-about p {
@@ -63,8 +67,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--text-light);
-  font-family: var(--font-heading);
+  color: #FFFFFF;
+  font-family: 'Fredoka', sans-serif;
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
@@ -87,18 +91,20 @@
   height: 42px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
-  color: var(--text-light);
-  transition: var(--transition-slow);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
 }
 
 .social-btn:hover {
-  background-color: var(--primary-coral);
-  color: var(--text-light);
-  transform: translateY(-5px) rotate(8deg);
+  background-color: #FF4B72;
+  color: #FFFFFF;
+  transform: translateY(-4px);
 }
 
 .footer-links {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-links li {
@@ -107,11 +113,11 @@
 
 .footer-links a {
   color: #E2E3E8;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: var(--secondary-sky);
+  color: #00A2E8;
   padding-left: 5px;
 }
 
@@ -125,7 +131,7 @@
 
 .footer-contact-item span.icon {
   font-size: 1.2rem;
-  color: var(--primary-coral);
+  color: #FF4B72;
 }
 
 .footer-bottom {
@@ -141,7 +147,7 @@
 }
 
 .footer-bottom a {
-  color: var(--accent-yellow);
+  color: #FFC107;
 }
 .footer-bottom a:hover {
   text-decoration: underline;

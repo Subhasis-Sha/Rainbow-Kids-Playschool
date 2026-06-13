@@ -1,13 +1,23 @@
-<!-- Rainbow Kids Playschool - Activities Page: Play sandbox containing Art Easel and Bubble Pop games -->
+<!-- GVIT-Playschool Activities: Sandbox games. -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Activities - Rainbow Kids Playschool</title>
+  <title>Interactive Activities - GVIT-Playschool</title>
   <meta name="description" content="Play our interactive kids games! Draw on the creative art easel board or pop colorful letters in the bubble sandbox pop game.">
+  <link rel="icon" href="assets/images/icons/gvi.png" type="image/png">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
   
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/navbar.css">
@@ -16,100 +26,144 @@
   <link rel="stylesheet" href="assets/css/games.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
-<body>
+<body class="theme-activities">
 
-  
-  <div id="navbar-placeholder"></div>
+  <!-- Sticky Top Navigation Bar -->
+  <nav class="navbar navbar-expand-xl sticky-top shadow-sm py-3" style="background-color: rgba(255, 253, 245, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 2px dashed rgba(255, 75, 114, 0.15);">
+    <div class="container">
+      <a class="logo navbar-brand d-flex align-items-center text-dark fw-bold fs-3" href="index.html">
+        <div class="logo-icon-wrapper me-2">
+          <img src="assets/images/icons/gvi.png" alt="GVIT Logo" width="60" height="60">
+        </div>
+        <span>GVIT-Playschool</span>
+      </a>
+      
+      <div class="d-flex align-items-center order-xl-last gap-2">
+        <div class="rewards-nav-badge" data-bs-toggle="modal" data-bs-target="#achievementsModal" id="rewards-badge">
+          <span class="star-icon text-warning"><i class="fa-solid fa-star"></i></span>
+          <span class="text-label">Stars:</span>
+          <span id="star-count">10</span>
+        </div>
+        <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Theme" onclick="playSynthSound('click')">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-line"></span>
+          <span class="toggler-line"></span>
+          <span class="toggler-line"></span>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="nav-menu navbar-nav mx-auto mb-2 mb-xl-0 gap-2 gap-xl-3 mt-3 mt-xl-0">
+          <li class="nav-item" data-page="index"><a href="index.html">Home</a></li>
+          <li class="nav-item" data-page="about"><a href="about.html">About Us</a></li>
+          <li class="nav-item" data-page="programs"><a href="programs.html">Programs</a></li>
+          <li class="nav-item" data-page="gallery"><a href="gallery.html">Gallery</a></li>
+          <li class="nav-item active" data-page="activities"><a href="activities.html">Activities</a></li>
+          <li class="nav-item" data-page="admission"><a href="admission.html">Admission</a></li>
+          <li class="nav-item" data-page="contact"><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  
-  <section class="section" style="background: linear-gradient(135deg, rgba(255,209,102,0.08), rgba(6,214,160,0.08)); padding: 100px 0 40px;">
-    <div class="container" style="text-align: center;">
-      <h1 style="font-size: 3rem; margin-bottom: 20px; font-family: var(--font-heading);">Kids Play Sandbox 🎮</h1>
-      <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto; color: var(--text-muted);">
+  <!-- Header Section -->
+  <section class="section page-hero" style="background: linear-gradient(135deg, rgba(255,193,7,0.08), rgba(32,201,151,0.08));">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-3">Kids Play Sandbox <i class="fa-solid fa-gamepad text-success"></i></h1>
+      <p class="fs-5 text-muted max-width-700 mx-auto">
         Try our interactive games! Express yourself on the drawing easel or click to pop bubbles. You will earn stars and unlock badges!
       </p>
     </div>
   </section>
 
-  
-  <section class="section" style="padding-top: 20px;">
+  <!-- Sandbox Games Grid Section -->
+  <section class="section pt-3">
     <div class="container">
       
-      <div class="activities-grid">
+      <div class="row g-4">
         
-        
-        <div class="game-container-card">
-          <div class="game-header">
-            <h2 class="game-title">🎨 Creative Art Easel</h2>
-            <p class="game-subtitle">Draw anything you like! Save your art to earn +15 stars!</p>
-          </div>
-
-          <div class="drawing-board-wrapper">
-            
-            <div class="canvas-container">
-              <canvas id="drawing-canvas"></canvas>
+        <!-- Easel Card -->
+        <div class="col-lg-6 col-12">
+          <div class="game-container-card">
+            <div class="game-header">
+              <h2 class="game-title">🎨 Creative Art Easel</h2>
+              <div class="my-2">
+                <span id="easel-challenge" class="badge text-dark fs-6" style="background-color: #FFC107; border: 2px dashed #2B2D42; padding: 8px 16px;">Challenge: Draw a Circle</span>
+              </div>
+              <p class="game-subtitle m-0">Trace the dotted challenge shape! Match it to earn +10 stars!</p>
             </div>
 
-            
-            <div class="drawing-controls">
-              
-              
-              <div class="controls-row">
-                <span style="font-weight: 700; font-family: var(--font-heading);">Colors:</span>
-                <div class="color-palette">
-                  <div class="color-swatch active" style="background-color: #FF6B8B;" data-color="#FF6B8B"></div>
-                  <div class="color-swatch" style="background-color: #4EA8DE;" data-color="#4EA8DE"></div>
-                  <div class="color-swatch" style="background-color: #FFD166;" data-color="#FFD166"></div>
-                  <div class="color-swatch" style="background-color: #06D6A0;" data-color="#06D6A0"></div>
-                  <div class="color-swatch" style="background-color: #9D4EDD;" data-color="#9D4EDD"></div>
-                  <div class="color-swatch" style="background-color: #2B2D42;" data-color="#2B2D42"></div>
-                </div>
+            <div class="drawing-board-wrapper">
+              <!-- Canvas Container -->
+              <div class="canvas-container w-100">
+                <canvas id="drawing-canvas"></canvas>
               </div>
 
-              
-              <div class="controls-row">
+              <!-- Controls Panel -->
+              <div class="drawing-controls">
                 
-                <div class="brush-size-picker">
-                  <span>Size:</span>
-                  <input type="range" id="brush-size" min="4" max="32" value="8">
+                <!-- Color palette -->
+                <div class="controls-row flex-sm-nowrap">
+                  <span class="fw-bold text-dark" style="font-family: 'Fredoka', sans-serif;">Colors:</span>
+                  <div class="color-palette flex-wrap gap-2">
+                    <div class="color-swatch active" style="background-color: #FF4B72;" data-color="#FF4B72"></div>
+                    <div class="color-swatch" style="background-color: #00A2E8;" data-color="#00A2E8"></div>
+                    <div class="color-swatch" style="background-color: #FFC107;" data-color="#FFC107"></div>
+                    <div class="color-swatch" style="background-color: #20C997;" data-color="#20C997"></div>
+                    <div class="color-swatch" style="background-color: #8A2BE2;" data-color="#8A2BE2"></div>
+                    <div class="color-swatch" style="background-color: #2B2D42;" data-color="#2B2D42"></div>
+                  </div>
                 </div>
 
-                
-                <div class="tool-buttons">
-                  <button class="btn btn-outline btn-tool" id="tool-eraser">🧼 Eraser</button>
-                  <button class="btn btn-outline btn-tool" style="border-color: #FF6B8B; color: #FF6B8B;" id="tool-clear">🗑️ Clear</button>
-                  <button class="btn btn-sky btn-tool" id="tool-save">💾 Save Art</button>
+                <!-- Size and tools -->
+                <div class="controls-row justify-content-between flex-wrap gap-2">
+                  <div class="brush-size-picker">
+                    <span class="text-dark">Size:</span>
+                    <input type="range" id="brush-size" min="4" max="32" value="8" style="accent-color: #00A2E8;">
+                  </div>
+                  
+                  <div class="tool-buttons flex-wrap gap-2">
+                    <button class="btn btn-outline-warning btn-tool py-1" id="tool-hint"><i class="fa-solid fa-lightbulb"></i> Hint</button>
+                    <button class="btn btn-outline-secondary btn-tool py-1" id="tool-eraser"><i class="fa-solid fa-eraser"></i> Eraser</button>
+                    <button class="btn btn-outline-danger btn-tool py-1" id="tool-clear"><i class="fa-solid fa-trash-can"></i> Clear</button>
+                    <button class="btn btn-primary btn-tool py-1" style="background-color: #00A2E8; border-color: #00A2E8;" id="tool-skip">Skip Shape <i class="fa-solid fa-forward"></i></button>
+                    <button class="btn btn-success btn-tool py-1" id="tool-submit" style="background-color: #20C997; border-color: #20C997;">Submit Drawing <i class="fa-solid fa-check ms-1"></i></button>
+                  </div>
                 </div>
+
               </div>
-
             </div>
           </div>
         </div>
 
-        
-        <div class="game-container-card card-bubble">
-          <div class="game-header">
-            <h2 class="game-title">🧼 Bubble Pop Sandbox</h2>
-            <p class="game-subtitle">Pop letters, numbers, and animals! Pop 30 to get a special badge!</p>
-          </div>
-
-          <div class="bubble-game-wrapper">
-            
-            <div class="bubble-play-area" id="bubble-play-area">
-              
-              
-              <div class="game-overlay" id="bubble-overlay">
-                <h3 id="bubble-overlay-title">Pop the Bubbles!</h3>
-                <p id="bubble-overlay-text">Bubbles float up from the bottom. Click or tap to pop them as fast as you can!</p>
-                <button class="btn btn-coral" id="bubble-start-btn">Start Popping! 🚀</button>
-              </div>
-
+        <!-- Bubble Card -->
+        <div class="col-lg-6 col-12">
+          <div class="game-container-card card-bubble">
+            <div class="game-header">
+              <h2 class="game-title">🧼 Bubble Pop Sandbox</h2>
+              <p class="game-subtitle">Pop 10 bubbles to earn +5 stars!</p>
             </div>
 
-            
-            <div class="bubble-scores-row">
-              <div class="score-item">Score: <span id="bubble-score-current">0</span></div>
-              <div class="score-item">Best: <span id="bubble-score-high">0</span></div>
+            <div class="bubble-game-wrapper w-100">
+              <div class="bubble-play-area position-relative" id="bubble-play-area">
+                
+                <!-- Game Over/Start overlay -->
+                <div class="game-overlay" id="bubble-overlay">
+                  <h3>Pop the Bubbles!</h3>
+                  <p>Bubbles float up from the bottom. Click or tap to pop them as fast as you can!</p>
+                  <button class="btn btn-coral" id="bubble-start-btn">Start Popping! <i class="fa-solid fa-play ms-2"></i></button>
+                </div>
+
+              </div>
+
+              <!-- Scores -->
+              <div class="bubble-scores-row">
+                <div class="score-item">Pops: <span id="bubble-score-current">0 / 10</span></div>
+                <div class="score-item">Total Pops: <span id="bubble-score-total">0</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -119,17 +173,122 @@
     </div>
   </section>
 
-  
-  <div id="footer-placeholder"></div>
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+    
+    <div class="container">
+      <div class="row g-4 mb-5 text-start">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <div class="footer-logo d-flex align-items-center mb-3">
+            <img src="assets/images/icons/gvi.png" alt="GVIT Logo" class="me-2" width="40" height="40">
+            <span>GVIT-Playschool</span>
+          </div>
+          <p class="text-white-50">Nurturing young minds through creative play, safety-first policies, and a comprehensive early learning curriculum.</p>
+          <div class="social-links d-flex gap-2 mt-3">
+            <a href="#" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-btn" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 footer-col">
+          <h3 class="h5 fw-bold mb-4">Quick Links</h3>
+          <ul class="footer-links list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>About School</a></li>
+            <li class="mb-2"><a href="programs.html" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>Our Programs</a></li>
+            <li class="mb-2"><a href="activities.html" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>Play Activities</a></li>
+            <li class="mb-2"><a href="admission.html" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>Admissions</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 footer-col">
+          <h3 class="h5 fw-bold mb-4">Programs</h3>
+          <ul class="footer-links list-unstyled">
+            <li class="mb-2"><a href="programs.html#nursery" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>Nursery Class</a></li>
+            <li class="mb-2"><a href="programs.html#lkg" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>LKG Class</a></li>
+            <li class="mb-2"><a href="programs.html#ukg" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>UKG Class</a></li>
+            <li class="mb-2"><a href="activities.html" class="text-white-50 text-decoration-none"><i class="fa-solid fa-chevron-right me-1 small"></i>Play Sandbox</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 footer-col">
+          <h3 class="h5 fw-bold mb-4">Contact Us</h3>
+          <div class="footer-contact-item d-flex align-items-start mb-3">
+            <span class="icon me-3"><i class="fa-solid fa-map-location-dot text-danger"></i></span>
+            <p class="text-white-50 m-0">Bhubaneswar Branch, Room-08, 2nd Floor, BMC Panchadeep Complex, Unit 4, Odisha 751001</p>
+          </div>
+          <div class="footer-contact-item d-flex align-items-start mb-3">
+            <span class="icon me-3"><i class="fa-solid fa-phone text-danger"></i></span>
+            <p class="text-white-50 m-0">+91 7606885535</p>
+          </div>
+          <div class="footer-contact-item d-flex align-items-start mb-3">
+            <span class="icon me-3"><i class="fa-solid fa-envelope text-danger"></i></span>
+            <p class="text-white-50 m-0">subhasissha991@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom text-center pt-4 border-top border-secondary">
+      <div class="container text-white-50">
+        <p class="mb-1">&copy; 2026 GVIT-Playschool. All rights reserved.</p>
+        <p class="mb-0">Made with <i class="fa-solid fa-heart text-danger"></i> for a brighter future. Play & Learn!</p>
+      </div>
+    </div>
+  </footer>
 
-  
-  <div id="mascot-placeholder"></div>
-  <div id="rewards-placeholder"></div>
+  <!-- Floating Mascot Widget -->
+  <div class="mascot-widget d-none d-sm-flex flex-column align-items-end" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; pointer-events: none;">
+    <div class="mascot-speech-bubble" style="background: #FFFFFF; border: 3px solid #FF4B72; border-radius: 20px; padding: 12px 20px; margin-bottom: 10px; max-width: 240px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative; pointer-events: auto;">
+      <p class="m-0 small fw-bold text-dark">Hi! I'm Barnaby the Bunny! Click the star badge above to see achievements! 🐰</p>
+      <div style="position: absolute; bottom: -12px; right: 35px; border-width: 12px 12px 0 0; border-style: solid; border-color: #FF4B72 transparent; width: 0; height: 0;"></div>
+      <div style="position: absolute; bottom: -7px; right: 36px; border-width: 9px 9px 0 0; border-style: solid; border-color: #FFFFFF transparent; width: 0; height: 0; z-index: 1;"></div>
+    </div>
+    <div class="mascot-interactive mascot-bounce-idle" onclick="playSynthSound('click')" style="width: 90px; height: 90px; cursor: pointer; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15)); pointer-events: auto;">
+      <img src="assets/images/mascots/rabbit.png" alt="Mascot Barnaby" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+  </div>
 
-  
-  <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/rewards.js" defer></script>
-  <script src="assets/js/mascot.js" defer></script>
+  <!-- Floating Back-to-Top Button -->
+  <button id="back-to-top" class="btn-back-to-top" aria-label="Back to Top" onclick="playSynthSound('click')">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Scoreboard Modal -->
+  <div class="modal fade" id="achievementsModal" tabindex="-1" aria-labelledby="achievementsModalLabel" aria-hidden="true" style="z-index: 2000;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-5" style="border-color: #FFC107; background-color: #FFFDF5;">
+        <div class="modal-header border-0 pb-0 justify-content-end">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-size: 1.2rem;"></button>
+        </div>
+        <div class="modal-body text-center pt-0 px-4 pb-4">
+          <h3 class="modal-title fw-bold text-warning mb-2" id="achievementsModalLabel" style="font-family: 'Fredoka', sans-serif;">🌟 My Scoreboard 🌟</h3>
+          <p class="text-muted small mb-4">See how many stars you have earned!</p>
+          <div class="scorecard-container my-4 p-4 rounded-4 text-start" style="background-color: #FFFFFF; border: 3px dashed #FFC107;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="fw-bold text-dark" style="font-size: 1.1rem; font-family: 'Fredoka', sans-serif;">🧼 Bubble Pop Stars:</span>
+              <span id="achieve-bubble-stars" class="badge text-white fs-5 px-3 py-2 rounded-pill" style="background-color: #FF4B72;">0</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark" style="font-size: 1.1rem; font-family: 'Fredoka', sans-serif;">🎨 Painting Stars:</span>
+              <span id="achieve-paint-stars" class="badge text-white fs-5 px-3 py-2 rounded-pill" style="background-color: #00A2E8;">0</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-4 mt-2 fw-bold shadow-sm" onclick="resetStars()"><i class="fa-solid fa-rotate-left me-1"></i> Reset Star Points</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
   <script src="assets/js/drawing.js" defer></script>
   <script src="assets/js/bubbles.js" defer></script>
 </body>

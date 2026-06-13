@@ -1,148 +1,463 @@
-<!-- Rainbow Kids Playschool - Homepage: Welcomes users, core focus cards, and testimonials -->
+<!-- GVIT-Playschool Homepage: Play, Learn & Grow! (For GitHub portfolio) -->
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rainbow Kids Playschool - Play, Learn & Grow!</title>
-  <meta name="description" content="Welcome to Rainbow Kids Playschool. We offer a safe, happy environment for Nursery, LKG, and UKG students, with interactive learning, games, and creative arts.">
-  
-  
+  <title>GVIT-Playschool - Play, Learn & Grow!</title>
+  <meta name="description"
+    content="Welcome to GVIT-Playschool. We offer a safe, happy environment for Nursery, LKG, and UKG students, with interactive learning, games, and creative arts.">
+  <link rel="icon" href="assets/images/icons/gvi.png" type="image/png">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
+
 <body>
 
-  
-  <div id="navbar-placeholder"></div>
+  <!-- Top Navigation Bar -->
+  <nav class="navbar navbar-expand-xl sticky-top shadow-sm py-3"
+    style="background-color: rgba(255, 253, 245, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 2px dashed rgba(255, 75, 114, 0.15);">
+    <div class="container">
+      <a class="logo navbar-brand d-flex align-items-center text-dark fw-bold fs-3" href="index.html">
+        <div class="logo-icon-wrapper me-2">
+          <img src="assets/images/icons/gvi.png" alt="GVIT Logo" width="60" height="60">
+        </div>
+        <span>GVIT-Playschool</span>
+      </a>
 
-  
-  <section class="hero-section" style="position: relative; overflow: hidden; background: url('assets/images/hero/hero-bg.jpg') no-repeat center center/cover; padding: 160px 0 120px;">
-    
-    
-    <div style="position: absolute; top: 10%; left: 0; width: 100%; height: 150px; pointer-events: none; opacity: 0.85; z-index: 2;">
-      <img src="assets/images/hero/clouds.png" class="cloud-drift-slow" style="width: 250px; position: absolute;" alt="Cloud">
-      <img src="assets/images/hero/clouds.png" class="cloud-drift-fast" style="width: 180px; position: absolute; top: 40px; animation-delay: -10s;" alt="Cloud">
+      <div class="d-flex align-items-center order-xl-last gap-2">
+        <div class="rewards-nav-badge" data-bs-toggle="modal" data-bs-target="#achievementsModal" id="rewards-badge">
+          <span class="star-icon text-warning"><i class="fa-solid fa-star"></i></span>
+          <span class="text-label">Stars:</span>
+          <span id="star-count">10</span>
+        </div>
+        <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Theme" onclick="playSynthSound('click')">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-line"></span>
+          <span class="toggler-line"></span>
+          <span class="toggler-line"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="nav-menu navbar-nav mx-auto mb-2 mb-xl-0 gap-2 gap-xl-3 mt-3 mt-xl-0">
+          <li class="nav-item active" data-page="index"><a href="index.html">Home</a></li>
+          <li class="nav-item" data-page="about"><a href="about.html">About Us</a></li>
+          <li class="nav-item" data-page="programs"><a href="programs.html">Programs</a></li>
+          <li class="nav-item" data-page="gallery"><a href="gallery.html">Gallery</a></li>
+          <li class="nav-item" data-page="activities"><a href="activities.html">Activities</a></li>
+          <li class="nav-item" data-page="admission"><a href="admission.html">Admission</a></li>
+          <li class="nav-item" data-page="contact"><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section"
+    style="position: relative; overflow: hidden; background: url('assets/images/hero/hero-bg.jpg') no-repeat center center/cover; padding: 160px 0 120px;">
+    <!-- Floating Clouds -->
+    <div
+      style="position: absolute; top: 10%; left: 0; width: 100%; height: 150px; pointer-events: none; opacity: 0.85; z-index: 2;">
+      <img src="assets/images/hero/clouds.png" class="cloud-drift-slow" style="width: 250px; position: absolute;"
+        alt="Cloud">
+      <img src="assets/images/hero/clouds.png" class="cloud-drift-fast"
+        style="width: 180px; position: absolute; top: 40px; animation-delay: -10s;" alt="Cloud">
     </div>
 
-    
-    <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 700px; max-width: 100%; opacity: 0.25; z-index: 1; pointer-events: none;">
+    <!-- Background Rainbow -->
+    <div
+      style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 700px; max-width: 100%; opacity: 0.25; z-index: 1; pointer-events: none;">
       <img src="assets/images/hero/rainbow.png" style="width: 100%;" alt="Rainbow background">
     </div>
 
     <div class="container" style="position: relative; z-index: 10;">
       <div class="hero-content" style="max-width: 650px;">
-        <h1 class="hero-title float-element" style="font-size: 3.8rem; color: var(--text-dark); margin-bottom: 20px; text-shadow: 0 4px 10px rgba(255,255,255,0.8);">
-          Where <span style="color: var(--primary-coral);">Play</span> is the <span style="color: var(--secondary-sky);">Key</span> to Learning!
+        <h1 class="hero-title float-element display-3 fw-bold mb-3"
+          style="color: #2B2D42; text-shadow: 0 4px 10px rgba(255,255,255,0.8);">
+          Where <span class="color-coral">Play</span> is the <span class="color-sky">Key</span> to Learning!
         </h1>
-        <p style="font-size: 1.35rem; color: #4A4E69; margin-bottom: 35px; font-weight: 500;">
-          Welcome to Rainbow Kids. We nurture young minds through creative play, supportive care, and a state-of-the-art interactive early learning curriculum.
+        <p class="fs-4 text-muted mb-4 fw-medium">
+          Welcome to GVIT-Playschool. We nurture young minds through creative play, supportive care, and a state-of-the-art
+          interactive early learning curriculum.
         </p>
-        <div class="hero-buttons" style="display: flex; gap: 15px; flex-wrap: wrap;">
-          <a href="admission.html" class="btn btn-coral">Apply Online Now 🎒</a>
-          <a href="activities.html" class="btn btn-sky">Try Play Sandbox 🎮</a>
+        <div class="hero-buttons d-flex gap-3 flex-wrap">
+          <a href="admission.html" onclick="playSynthSound('click')" class="btn btn-coral">Apply Online Now <i
+              class="fa-solid fa-school-flag ms-2"></i></a>
+          <a href="activities.html" onclick="playSynthSound('click')" class="btn btn-sky">Try Play Sandbox <i
+              class="fa-solid fa-gamepad ms-2"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  
+  <!-- Core Focus Section -->
   <section class="section">
     <div class="container">
-      <div class="section-title">
-        <span>Why Choose Us</span>
-        <h2>Our Core Development Focus</h2>
+      <div class="section-title text-center">
+        <span class="color-coral fw-bold text-uppercase tracking-wider">Why Choose Us</span>
+        <h2 class="display-5 fw-bold mt-2">Our Core Development Focus</h2>
       </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 25px;">
-        
-        <div class="card border-coral hover-zoom" style="text-align: center;">
-          <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(255,107,139,0.1); border-radius: 50%;">
-            <img src="assets/images/icons/abc.png" style="width: 50px; height: 50px;" alt="ABC Icon">
+
+      <div class="row g-3 g-md-4 mt-3">
+        <!-- Literacy -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="card border-coral hover-zoom text-center h-100">
+            <div
+              style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(255,75,114,0.1); border-radius: 50%;">
+              <img src="assets/images/icons/abc.png" style="width: 50px; height: 50px;" alt="ABC Icon">
+            </div>
+            <h3 class="h4 mb-3">Early Literacy</h3>
+            <p class="text-muted mb-0">Fun language skills, phonics, and writing setups tailored for little hands.</p>
           </div>
-          <h3 style="margin-bottom: 12px; font-size: 1.4rem;">Early Literacy</h3>
-          <p style="color: var(--text-muted);">Fun language skills, phonics, and writing setups tailored for little hands.</p>
         </div>
 
-        
-        <div class="card border-sky hover-zoom" style="text-align: center;">
-          <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(78,168,222,0.1); border-radius: 50%;">
-            <img src="assets/images/icons/puzzle.png" style="width: 50px; height: 50px;" alt="Puzzle Icon">
+        <!-- Thinking -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="card border-sky hover-zoom text-center h-100">
+            <div
+              style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(0,162,232,0.1); border-radius: 50%;">
+              <img src="assets/images/icons/puzzle.png" style="width: 50px; height: 50px;" alt="Puzzle Icon">
+            </div>
+            <h3 class="h4 mb-3">Logical Thinking</h3>
+            <p class="text-muted mb-0">Puzzles, shape matching, sorting cards, and building blocks to grow curious
+              minds.</p>
           </div>
-          <h3 style="margin-bottom: 12px; font-size: 1.4rem;">Logical Thinking</h3>
-          <p style="color: var(--text-muted);">Puzzles, shape matching, sorting cards, and building blocks to grow curious minds.</p>
         </div>
 
-        
-        <div class="card border-yellow hover-zoom" style="text-align: center;">
-          <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(255,209,102,0.15); border-radius: 50%;">
-            <img src="assets/images/icons/drawing.png" style="width: 50px; height: 50px;" alt="Drawing Icon">
+        <!-- Arts -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="card border-yellow hover-zoom text-center h-100">
+            <div
+              style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(255,193,7,0.15); border-radius: 50%;">
+              <img src="assets/images/icons/drawing.png" style="width: 50px; height: 50px;" alt="Drawing Icon">
+            </div>
+            <h3 class="h4 mb-3">Creative Arts</h3>
+            <p class="text-muted mb-0">Painting easel setups, model clays, and drawings to inspire tiny Picasso dreams.
+            </p>
           </div>
-          <h3 style="margin-bottom: 12px; font-size: 1.4rem;">Creative Arts</h3>
-          <p style="color: var(--text-muted);">Painting easel setups, model clays, and drawings to inspire tiny Picasso dreams.</p>
         </div>
 
-        
-        <div class="card border-purple hover-zoom" style="text-align: center;">
-          <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(157,78,221,0.1); border-radius: 50%;">
-            <img src="assets/images/icons/music.png" style="width: 50px; height: 50px;" alt="Music Icon">
+        <!-- Music -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="card border-purple hover-zoom text-center h-100">
+            <div
+              style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(138,43,226,0.1); border-radius: 50%;">
+              <img src="assets/images/icons/music.png" style="width: 50px; height: 50px;" alt="Music Icon">
+            </div>
+            <h3 class="h4 mb-3">Rhythm & Music</h3>
+            <p class="text-muted mb-0">Alphabet nursery rhymes, instrument plays, and clapping sessions for motor
+              coordination.</p>
           </div>
-          <h3 style="margin-bottom: 12px; font-size: 1.4rem;">Rhythm & Music</h3>
-          <p style="color: var(--text-muted);">Alphabet nursery rhymes, instrument plays, and clapping sessions for motor coordination.</p>
         </div>
       </div>
     </div>
   </section>
 
-  
-  <section class="section" style="background-color: #FFFDF2; border-top: 4px dashed rgba(255,209,102,0.3); border-bottom: 4px dashed rgba(255,209,102,0.3);">
-    <div class="container" style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
-      <div style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
-        <img src="assets/images/mascots/rabbit.png" class="float-element" style="width: 250px; cursor: pointer;" alt="Barnaby Bunny" onclick="triggerMascotSpeech()">
-      </div>
-      <div style="flex: 1.5; min-width: 300px;">
-        <h2 style="font-size: 2.3rem; margin-bottom: 15px; font-family: var(--font-heading);">Meet Our Friends! 🐰🐼🐘</h2>
-        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 25px;">
-          Meet Barnaby the Bunny, Penny the Panda, and Elly the Elephant! They are our mascot friends who hover at the corner of the screen. Click on them to chat, tell jokes, and get instructions. Choose your favorite mascot anytime using the palette selector!
-        </p>
-        <button class="btn btn-yellow" onclick="triggerMascotSpeech()">Chat with Barnaby!</button>
+  <!-- Mascots Intro Section -->
+  <section class="section"
+    style="background-color: #c27dc3; border-top: 4px dashed rgb(255, 255, 255); border-bottom: 4px dashed rgb(255, 255, 255);">
+    <div class="container">
+      <div class="row align-items-center g-3 g-md-5">
+        <div class="col-md-5 text-center">
+          <img src="assets/images/mascots/rabbit.png" class="float-element mx-auto" style="width: 200px; max-width: 80%;"
+            alt="Barnaby Bunny">
+        </div>
+        <div class="col-md-7 text-center text-md-start">
+          <h2 class="display-5 fw-bold mb-3">Meet Our Friends! <i class="fa-solid fa-face-smile text-warning"></i></h2>
+          <p class="fs-5 text-muted mb-4">
+            Meet Barnaby the Bunny, Penny the Panda, and Elly the Elephant! They are our mascot friends. Hover over the
+            bunny at the corner of the screen to chat, read instructions, and earn badges!
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  
+  <!-- Parent Testimonials Section -->
   <section class="section">
     <div class="container">
-      <div class="section-title">
-        <span>Reviews</span>
-        <h2>What Our Happy Parents Say</h2>
+      <div class="section-title text-center">
+        <span class="color-sky fw-bold text-uppercase tracking-wider">Reviews</span>
+        <h2 class="display-5 fw-bold mt-2">What Our Happy Parents Say</h2>
       </div>
 
-      <div style="max-width: 800px; margin: 0 auto; background: var(--bg-white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); border: 2px dashed rgba(78,168,222,0.2); position: relative;">
-        <p style="font-size: 1.25rem; font-style: italic; color: #4A4E69; text-align: center; margin-bottom: 30px;">
-          "Rainbow Kids has been a second home for my daughter. She wakes up excited to go to school every day! The teacher attention, safety standards, and interactive games are outstanding."
-        </p>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-          <div style="width: 50px; height: 50px; border-radius: 50%; background-color: var(--secondary-sky); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 700;">JD</div>
-          <div>
-            <h4 style="margin: 0; font-family: var(--font-heading);">Jane Doe</h4>
-            <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Mother of Emily (LKG)</p>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 g-md-4 mt-3">
+        <!-- Ichigo Kurosaki -->
+        <div class="col">
+          <div
+            class="card h-100 bg-white rounded-4 p-4 shadow-sm border border-2 border-dashed border-info position-relative">
+            <p class="small text-muted fst-italic mb-4">
+              "My son Kazui loves the painting easel! The staff is extremely supportive and helped him build his
+              confidence. A great place for young minds!"
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center justify-content-center fw-bold text-white rounded-circle shadow-sm"
+                style="width: 45px; height: 45px; background-color: #FF7F50; flex-shrink: 0;">IK</div>
+              <div>
+                <h4 class="h6 mb-0 fw-bold">Ichigo Kurosaki</h4>
+                <p class="small text-muted mb-0">Father of Kazui</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Madara Uchiha -->
+        <div class="col">
+          <div
+            class="card h-100 bg-white rounded-4 p-4 shadow-sm border border-2 border-dashed border-danger position-relative">
+            <p class="small text-muted fst-italic mb-4">
+              "The structured curriculum teaches children discipline while keeping it incredibly fun. The bubble pop
+              game is exceptionally engaging!"
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center justify-content-center fw-bold text-white rounded-circle shadow-sm"
+                style="width: 45px; height: 45px; background-color: #DC3545; flex-shrink: 0;">MU</div>
+              <div>
+                <h4 class="h6 mb-0 fw-bold">Madara Uchiha</h4>
+                <p class="small text-muted mb-0">Uncle of Tajima</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Sosuke Aizen -->
+        <div class="col">
+          <div
+            class="card h-100 bg-white rounded-4 p-4 shadow-sm border border-2 border-dashed border-primary position-relative">
+            <p class="small text-muted fst-italic mb-4">
+              "A masterclass in early education. Everything from the safety standards to the interactive games is
+              designed to perfection."
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center justify-content-center fw-bold text-white rounded-circle shadow-sm"
+                style="width: 45px; height: 45px; background-color: #00A2E8; flex-shrink: 0;">SA</div>
+              <div>
+                <h4 class="h6 mb-0 fw-bold">Sosuke Aizen</h4>
+                <p class="small text-muted mb-0">Guardian of Hiyori</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Eren Yeager -->
+        <div class="col">
+          <div
+            class="card h-100 bg-white rounded-4 p-4 shadow-sm border border-2 border-dashed border-success position-relative">
+            <p class="small text-muted fst-italic mb-4">
+              "The outdoor play area and spacious classrooms give the kids absolute freedom to explore. They learn and
+              grow with zero restrictions."
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center justify-content-center fw-bold text-white rounded-circle shadow-sm"
+                style="width: 45px; height: 45px; background-color: #28A745; flex-shrink: 0;">EY</div>
+              <div>
+                <h4 class="h6 mb-0 fw-bold">Eren Yeager</h4>
+                <p class="small text-muted mb-0">Father of Ymir</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Monkey D. Luffy -->
+        <div class="col">
+          <div
+            class="card h-100 bg-white rounded-4 p-4 shadow-sm border border-2 border-dashed border-warning position-relative">
+            <p class="small text-muted fst-italic mb-4">
+              "The healthy snacks and lunch program are spectacular! My child eats well, plays hard, and always comes
+              home with a giant smile."
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center justify-content-center fw-bold text-white rounded-circle shadow-sm"
+                style="width: 45px; height: 45px; background-color: #FFC107; flex-shrink: 0;">ML</div>
+              <div>
+                <h4 class="h6 mb-0 fw-bold">Monkey D. Luffy</h4>
+                <p class="small text-muted mb-0">Father of Ace</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Naruto Uzumaki -->
+        <div class="col">
+          <div
+            class="card h-100 bg-white rounded-4 p-4 shadow-sm border border-2 border-dashed border-orange position-relative"
+            style="border-color: #FD7E14 !important;">
+            <p class="small text-muted fst-italic mb-4">
+              "Believe it! The staff treats every student like family. The interactive star reward system keeps my child
+              motivated to learn every day."
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center justify-content-center fw-bold text-white rounded-circle shadow-sm"
+                style="width: 45px; height: 45px; background-color: #FD7E14; flex-shrink: 0;">NU</div>
+              <div>
+                <h4 class="h6 mb-0 fw-bold">Naruto Uzumaki</h4>
+                <p class="small text-muted mb-0">Father of Boruto</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  
-  <div id="footer-placeholder"></div>
+  <!-- Inlined Footer Layout -->
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill"></path>
+      </svg>
+    </div>
 
-  
-  <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/rewards.js" defer></script>
-  <script src="assets/js/mascot.js" defer></script>
+    <div class="container">
+      <div class="row g-4 mb-5 text-start">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <div class="footer-logo d-flex align-items-center mb-3">
+            <img src="assets/images/icons/gvi.png" alt="GVIT Logo" class="me-2" width="40" height="40">
+            <span>GVIT-Playschool</span>
+          </div>
+          <p class="text-white-50">Nurturing young minds through creative play, safety-first policies, and a comprehensive early learning curriculum.</p>
+          <div class="social-links d-flex gap-2 mt-3">
+            <a href="#" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-btn" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-col">
+          <h3 class="h5 fw-bold mb-4">Quick Links</h3>
+          <ul class="footer-links list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>About School</a></li>
+            <li class="mb-2"><a href="programs.html" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>Our Programs</a></li>
+            <li class="mb-2"><a href="activities.html" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>Play Activities</a></li>
+            <li class="mb-2"><a href="admission.html" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>Admissions</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-col">
+          <h3 class="h5 fw-bold mb-4">Programs</h3>
+          <ul class="footer-links list-unstyled">
+            <li class="mb-2"><a href="programs.html#nursery" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>Nursery Class</a></li>
+            <li class="mb-2"><a href="programs.html#lkg" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>LKG Class</a></li>
+            <li class="mb-2"><a href="programs.html#ukg" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>UKG Class</a></li>
+            <li class="mb-2"><a href="activities.html" class="text-white-50 text-decoration-none"><i
+                  class="fa-solid fa-chevron-right me-1 small"></i>Play Sandbox</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-col">
+          <h3 class="h5 fw-bold mb-4">Contact Us</h3>
+          <div class="footer-contact-item d-flex align-items-start mb-3">
+            <span class="icon me-3"><i class="fa-solid fa-map-location-dot text-danger"></i></span>
+            <p class="text-white-50 m-0">Bhubaneswar Branch, Room-08, 2nd Floor, BMC Panchadeep Complex, Unit 4, Odisha 751001</p>
+          </div>
+          <div class="footer-contact-item d-flex align-items-start mb-3">
+            <span class="icon me-3"><i class="fa-solid fa-phone text-danger"></i></span>
+            <p class="text-white-50 m-0">+91 7606885535</p>
+          </div>
+          <div class="footer-contact-item d-flex align-items-start mb-3">
+            <span class="icon me-3"><i class="fa-solid fa-envelope text-danger"></i></span>
+            <p class="text-white-50 m-0">subhasissha991@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom text-center pt-4 border-top border-secondary">
+      <div class="container text-white-50">
+        <p class="mb-1">&copy; 2026 GVIT-Playschool. All rights reserved.</p>
+        <p class="mb-0">Made with <i class="fa-solid fa-heart text-danger"></i> for a brighter future. Play & Learn!</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mascot-widget d-none d-sm-flex flex-column align-items-end"
+    style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; pointer-events: none;">
+    <div class="mascot-speech-bubble"
+      style="background: #FFFFFF; border: 3px solid #FF4B72; border-radius: 20px; padding: 12px 20px; margin-bottom: 10px; max-width: 240px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative; pointer-events: auto;">
+      <p class="m-0 small fw-bold text-dark">Hi! I'm Barnaby the Bunny! Click the star badge above to see achievements!
+        🐰</p>
+      <div
+        style="position: absolute; bottom: -12px; right: 35px; border-width: 12px 12px 0 0; border-style: solid; border-color: #FF4B72 transparent; width: 0; height: 0;">
+      </div>
+      <div
+        style="position: absolute; bottom: -7px; right: 36px; border-width: 9px 9px 0 0; border-style: solid; border-color: #FFFFFF transparent; width: 0; height: 0; z-index: 1;">
+      </div>
+    </div>
+    <div class="mascot-interactive mascot-bounce-idle" onclick="playSynthSound('click')"
+      style="width: 90px; height: 90px; cursor: pointer; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15)); pointer-events: auto;">
+      <img src="assets/images/mascots/rabbit.png" alt="Mascot Barnaby"
+        style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+  </div>
+
+  <button id="back-to-top" class="btn-back-to-top" aria-label="Back to Top" onclick="playSynthSound('click')">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <div class="modal fade" id="achievementsModal" tabindex="-1" aria-labelledby="achievementsModalLabel"
+    aria-hidden="true" style="z-index: 2000;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-5" style="border-color: #FFC107; background-color: #FFFDF5;">
+        <div class="modal-header border-0 pb-0 justify-content-end">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="font-size: 1.2rem;"></button>
+        </div>
+        <div class="modal-body text-center pt-0 px-4 pb-4">
+          <h3 class="modal-title fw-bold text-warning mb-2" id="achievementsModalLabel"
+            style="font-family: 'Fredoka', sans-serif;">🌟 My Scoreboard 🌟</h3>
+          <p class="text-muted small mb-4">See how many stars you have earned!</p>
+          <div class="scorecard-container my-4 p-4 rounded-4 text-start"
+            style="background-color: #FFFFFF; border: 3px dashed #FFC107;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="fw-bold text-dark" style="font-size: 1.1rem; font-family: 'Fredoka', sans-serif;">🧼 Bubble
+                Pop Stars:</span>
+              <span id="achieve-bubble-stars" class="badge text-white fs-5 px-3 py-2 rounded-pill"
+                style="background-color: #FF4B72;">0</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark" style="font-size: 1.1rem; font-family: 'Fredoka', sans-serif;">🎨 Painting
+                Stars:</span>
+              <span id="achieve-paint-stars" class="badge text-white fs-5 px-3 py-2 rounded-pill"
+                style="background-color: #00A2E8;">0</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-4 mt-2 fw-bold shadow-sm"
+            onclick="resetStars()"><i class="fa-solid fa-rotate-left me-1"></i> Reset Star Points</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
+
 </html>

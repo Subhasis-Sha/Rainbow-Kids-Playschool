@@ -1,161 +1,743 @@
-/* Responsive adjustments: Media queries for grids, container spacing, and mobile devices */
+/**
+ * @file responsive.css
+ * @description Consolidated media queries and viewport breakpoints for responsive layouts across all school web pages.
+ */
 
+/* ==========================================================================
+   Large Tablets / Small Laptops (max-width: 1199px)
+   ========================================================================== */
+@media (max-width: 1199px) {
+  .navbar-collapse {
+    background-color: rgba(255, 253, 245, 0.99);
+    border-radius: 0 0 20px 20px;
+    padding: 10px 16px 16px;
+    margin-top: 8px;
+    box-shadow: 0 15px 30px rgba(43, 45, 66, 0.1);
+    border-top: 2px dashed rgba(255, 75, 114, 0.15);
+  }
+
+  .nav-menu {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .nav-item {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .nav-item a {
+    width: 100%;
+    display: block;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .game-container-card {
+    min-height: 580px;
+  }
+  .bubble-play-area {
+    min-height: 300px;
+  }
+
+  .admission-card {
+    max-width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Tablets Landscape (max-width: 992px)
+   ========================================================================== */
 @media (max-width: 992px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
-  
+
   .activities-grid {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  
+
   .game-container-card {
-    height: 600px;
+    min-height: 620px;
+  }
+  .bubble-play-area {
+    min-height: 310px;
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .page-hero {
+    padding: 80px 0 50px;
+  }
+
+  .max-width-700 {
+    max-width: 100%;
+  }
+
+  .about-timeline {
+    max-width: 100%;
+  }
+
+  #contact-map {
+    height: 300px !important;
+  }
+
+  .gallery-thumb-wrapper {
+    height: 190px;
   }
 }
 
+/* ==========================================================================
+   Tablets Portrait / Large Phones (max-width: 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
   body {
     font-size: 15px;
   }
-
   .section {
-    padding: 60px 0;
+    padding: 50px 0;
   }
-
   .section-title {
-    font-size: 2rem;
-    margin-bottom: 35px;
+    font-size: 1.95rem;
+    margin-bottom: 28px;
   }
 
-  
-  .nav-toggle {
-    display: flex;
+  /* Navigation */
+  .logo.navbar-brand {
+    font-size: 1.5rem !important;
+  }
+  .logo-icon-wrapper {
+    width: 46px !important;
+    height: 46px !important;
+  }
+  .navbar {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
   }
 
-  .nav-menu {
-    position: fixed;
-    top: 80px;
-    right: -100%;
-    width: 280px;
-    height: calc(100vh - 80px);
-    background: var(--bg-cream);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 40px 30px;
-    gap: 20px;
-    box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.05);
-    border-left: 2px dashed rgba(255, 107, 139, 0.15);
-    transition: var(--transition-normal);
-    overflow-y: auto;
+  /* Hero Section */
+  .hero-section {
+    padding: 110px 0 70px !important;
+  }
+  .hero-content {
+    text-align: center;
+    max-width: 100% !important;
+  }
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  .nav-menu.open {
-    right: 0;
+  /* Inner Page Hero */
+  .page-hero {
+    padding: 70px 0 40px;
+  }
+  .max-width-700,
+  .max-width-600,
+  .max-width-500 {
+    max-width: 100%;
   }
 
-  .nav-item {
-    width: 100%;
-  }
-
-  .nav-item a {
-    display: block;
-    font-size: 1.2rem;
-    padding: 12px 15px;
-    border-radius: var(--radius-sm);
-  }
-
-  .nav-item a::after {
-    display: none;
-  }
-
-  
-  .rewards-nav-badge {
-    margin-right: 15px;
-    padding: 6px 12px;
-    font-size: 0.95rem;
-  }
-
-  
+  /* About School Timeline */
   .about-timeline::before {
-    left: 20px;
+    left: 18px;
   }
   .timeline-item {
     width: 100%;
     padding-left: 55px;
-    padding-right: 0;
+    padding-right: 15px;
     text-align: left !important;
   }
   .timeline-item::before {
-    left: 20px !important;
-    transform: translateX(-50%) !important;
+    left: 5px !important;
+    right: auto !important;
+    transform: translateX(0) !important;
   }
-  .timeline-item.left, .timeline-item.right {
+  .timeline-item.left,
+  .timeline-item.right {
     left: 0;
+    text-align: left !important;
+  }
+  .timeline-content {
+    display: block;
+    width: 100%;
   }
 
-  
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  /* Programs Page Tabs */
+  .program-tabs-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+  .program-tab-btn {
+    padding: 13px 18px;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+    border-radius: 14px;
+  }
+
+  /* Footer Layout */
+  .footer {
+    padding: 80px 0 25px;
+  }
+  .footer .footer-about,
+  .footer .footer-col {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
     text-align: center;
   }
-
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    text-align: center;
+  }
   .footer-col h3::after {
     left: 50%;
     transform: translateX(-50%);
   }
-
   .social-links {
     justify-content: center;
   }
-
-  .footer-contact-item {
+  .footer-logo {
     justify-content: center;
   }
-
-  
-  .hero-content {
-    padding: 120px 0 80px;
+  .footer-about p {
     text-align: center;
   }
-
-  .hero-title {
-    font-size: 2.5rem;
+  .footer-contact-item {
+    justify-content: flex-start !important;
+    text-align: left;
+    max-width: 290px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .footer-links {
+    text-align: left;
+    display: inline-block;
   }
 
-  .hero-buttons {
+  /* Game Panels */
+  .game-container-card {
+    padding: 16px 12px;
+    border-radius: 20px;
+    min-height: 560px;
+    border-width: 3px;
+  }
+  .canvas-container {
+    height: 230px;
+  }
+  .bubble-play-area {
+    min-height: 280px;
+  }
+
+  /* Activities Drawing Canvas Controls */
+  .tool-buttons {
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 7px !important;
+    width: 100%;
+  }
+  .btn-tool {
+    padding: 7px 11px;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+  .controls-row {
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 10px;
+    width: 100%;
+  }
+  .brush-size-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+  }
+  .brush-size-picker input[type="range"] {
+    width: 100%;
+    max-width: 200px;
+  }
+  .color-palette {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .game-title {
+    font-size: 1.55rem;
+  }
+
+  /* Contact Page Info */
+  #contact-map {
+    height: 260px !important;
+    margin-bottom: 30px !important;
+  }
+  .info-item-block {
+    gap: 12px;
+  }
+  .info-item-block .icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  /* Gallery Page List */
+  .gallery-thumb-wrapper {
+    height: 180px;
+  }
+  .filter-btn-group {
+    gap: 8px;
+  }
+  .gallery-filter-btn {
+    padding: 9px 16px;
+    font-size: 0.9rem;
+  }
+
+  /* Admission Wizard */
+  .admission-card {
+    padding: 20px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  /* Standard Display Typography Scale */
+  .display-4 {
+    font-size: 2.2rem !important;
+  }
+  .display-5 {
+    font-size: 1.9rem !important;
+  }
+  .display-6 {
+    font-size: 1.6rem !important;
   }
 }
 
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1.4rem;
+/* ==========================================================================
+   Mobile Devices (max-width: 576px)
+   ========================================================================== */
+@media (max-width: 576px) {
+  .logo.navbar-brand {
+    font-size: 1.3rem !important;
+    gap: 7px !important;
   }
   .logo-icon-wrapper {
-    width: 35px;
-    height: 35px;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .navbar {
+    padding-top: 12px !important;
+    padding-bottom: 13px !important;
+  }
+  .rewards-nav-badge {
+    padding: 5px 10px !important;
+    font-size: 0.88rem !important;
+  }
+  .rewards-nav-badge span.text-label {
+    display: none !important;
   }
 
-  .rewards-nav-badge span.text-label {
-    display: none; 
+  .hero-section {
+    padding: 95px 0 55px !important;
+  }
+  .hero-title {
+    font-size: 1.85rem;
+  }
+  .hero-buttons {
+    gap: 10px;
+  }
+
+  .page-hero {
+    padding: 60px 0 30px;
+  }
+  .max-width-700,
+  .max-width-600,
+  .max-width-500,
+  .max-width-400 {
+    max-width: 100%;
+  }
+
+  .schedule-item {
+    flex-direction: column;
+    gap: 3px;
+    padding: 12px 0;
+  }
+  .schedule-time {
+    min-width: auto;
+    font-size: 1rem;
+  }
+
+  .game-container-card {
+    min-height: 530px;
+    padding: 13px 10px;
+    border-radius: 18px;
+  }
+  .canvas-container {
+    height: 195px;
+  }
+  .bubble-play-area {
+    min-height: 260px;
+  }
+  .game-header {
+    margin-bottom: 10px;
+  }
+  .game-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .gallery-thumb-wrapper {
+    height: 165px;
+  }
+  .gallery-caption {
+    font-size: 0.95rem;
+  }
+  .filter-btn-group {
+    gap: 7px;
+  }
+  .gallery-filter-btn {
+    padding: 7px 13px;
+    font-size: 0.85rem;
+  }
+
+  #contact-map {
+    height: 220px !important;
+    border-radius: 14px !important;
+    border-width: 3px !important;
+  }
+
+  .admission-card {
+    padding: 16px 10px !important;
+    border-width: 3px !important;
+  }
+
+  .footer {
+    padding: 70px 0 20px;
+  }
+  .footer-logo {
+    font-size: 1.5rem;
+    justify-content: center;
+  }
+  .footer-about p {
+    text-align: center;
+  }
+
+  .display-4 {
+    font-size: 1.9rem !important;
+  }
+  .display-5 {
+    font-size: 1.65rem !important;
+  }
+  .display-6 {
+    font-size: 1.4rem !important;
+  }
+  h1.display-4 {
+    font-size: 1.85rem !important;
   }
 
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
+    margin-bottom: 22px;
   }
 
+  .card {
+    padding: 20px 15px;
+  }
+
+  .row-cols-md-2 .col,
+  .row-cols-lg-3 .col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Small Phones (max-width: 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
   .btn {
-    padding: 10px 22px;
-    font-size: 1rem;
-    width: 100%;
+    padding: 10px 18px;
+    font-size: 0.95rem;
   }
 
+  .page-hero {
+    padding: 55px 0 28px;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
   .hero-buttons {
     flex-direction: column;
     width: 100%;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-item a {
+    font-size: 1rem;
+    padding: 7px 12px;
+  }
+
+  .game-container-card {
+    min-height: 500px;
+    border-radius: 16px;
+  }
+  .canvas-container {
+    height: 175px;
+  }
+  .bubble-play-area {
+    min-height: 240px;
+  }
+  .game-title {
+    font-size: 1.35rem;
+  }
+  .btn-tool {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .color-swatch {
+    width: 26px;
+    height: 26px;
+  }
+
+  .program-tab-btn {
+    font-size: 0.9rem;
+    padding: 11px 14px;
+  }
+
+  .gallery-thumb-wrapper {
+    height: 155px;
+  }
+
+  #contact-map {
+    height: 200px !important;
+  }
+
+  .admission-card {
+    border-radius: 14px !important;
+  }
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .social-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mascot-widget {
+    display: none !important;
+  }
+
+  .display-4 {
+    font-size: 1.7rem !important;
+  }
+  .display-5 {
+    font-size: 1.5rem !important;
+  }
+  .display-6 {
+    font-size: 1.3rem !important;
+  }
+  h1.display-4 {
+    font-size: 1.7rem !important;
+  }
+}
+
+/* ==========================================================================
+   Ultra-Small Viewports (max-width: 380px)
+   ========================================================================== */
+@media (max-width: 380px) {
+  .logo.navbar-brand {
+    font-size: 1.1rem !important;
+    gap: 5px !important;
+  }
+  .logo-icon-wrapper {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .navbar {
+    padding-top: 12px !important;
+    padding-bottom: 13px !important;
+  }
+  .rewards-nav-badge {
+    padding: 4px 8px !important;
+    font-size: 0.78rem !important;
+    gap: 3px !important;
+  }
+  .nav-item a {
+    font-size: 0.95rem;
+    padding: 6px 10px;
+  }
+
+  .page-hero {
+    padding: 50px 0 24px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.45rem;
+  }
+  .section {
+    padding: 40px 0;
+  }
+
+  .game-title {
+    font-size: 1.2rem;
+  }
+  .canvas-container {
+    height: 158px;
+  }
+  .bubble-play-area {
+    min-height: 210px;
+  }
+  .btn-tool {
+    padding: 5px 8px;
+    font-size: 0.78rem;
+  }
+  .color-swatch {
+    width: 22px;
+    height: 22px;
+  }
+
+  .display-4 {
+    font-size: 1.5rem !important;
+  }
+  .display-5 {
+    font-size: 1.35rem !important;
+  }
+  .display-6 {
+    font-size: 1.2rem !important;
+  }
+  h1.display-4 {
+    font-size: 1.5rem !important;
+  }
+
+  .card {
+    padding: 15px 12px;
+  }
+
+  .footer-logo {
+    font-size: 1.3rem;
+  }
+
+  #contact-map {
+    height: 180px !important;
+  }
+
+  .gallery-thumb-wrapper {
+    height: 140px;
+  }
+  .gallery-filter-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ==========================================================================
+   Legacy Handheld Devices (max-width: 320px)
+   ========================================================================== */
+@media (max-width: 320px) {
+  .logo.navbar-brand {
+    font-size: 0.95rem !important;
+  }
+  .logo-icon-wrapper {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .navbar {
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+  }
+  .rewards-nav-badge {
+    padding: 3px 6px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .hero-title {
+    font-size: 1.35rem;
+  }
+  .section-title {
+    font-size: 1.3rem;
+  }
+  .section {
+    padding: 35px 0;
+  }
+
+  .canvas-container {
+    height: 138px;
+  }
+  .game-title {
+    font-size: 1.1rem;
+  }
+  .btn-tool {
+    padding: 5px 7px;
+    font-size: 0.75rem;
+  }
+
+  .display-4 {
+    font-size: 1.35rem !important;
+  }
+  .display-5 {
+    font-size: 1.2rem !important;
+  }
+  .display-6 {
+    font-size: 1.1rem !important;
+  }
+
+  .card {
+    padding: 12px 10px;
+  }
+
+  .gallery-thumb-wrapper {
+    height: 130px;
+  }
+
+  #contact-map {
+    height: 160px !important;
+  }
+
+  .btn {
+    padding: 9px 14px;
+    font-size: 0.88rem;
+  }
+}
+
+/* ==========================================================================
+   Large Desktop Screens (min-width: 1200px)
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .game-container-card {
+    min-height: 660px;
+  }
+  .bubble-play-area {
+    min-height: 400px;
   }
 }
